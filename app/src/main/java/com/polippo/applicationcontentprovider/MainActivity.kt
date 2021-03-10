@@ -1,8 +1,10 @@
 package com.polippo.applicationcontentprovider
 
 import android.database.Cursor
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.provider.BaseColumns._ID
 import androidx.loader.app.LoaderManager
 import androidx.loader.content.CursorLoader
 import androidx.loader.content.Loader
@@ -26,7 +28,17 @@ class MainActivity : AppCompatActivity(), LoaderManager.LoaderCallbacks<Cursor> 
         noteAdd = findViewById(R.id.note_add)
         noteAdd.setOnClickListener{}
 
-        adapter = NotesAdapter()
+        adapter = NotesAdapter(object: NoteClickedListener{
+            override fun NoteClickedItem(cursor: Cursor) {
+                val id = cursor.getLong(cursor.getColumnIndex(_ID))
+            }
+
+            override fun NoteRemoveItem(cursor: Cursor?) {
+                val id = cursor?.getLong(cursor.getColumnIndex(_ID))
+                contentResolver.delete(Uri.withAppendedPath(NotesProvider.URI_NOTES, id.toString()), null, null)
+            }
+
+        })
         adapter.setHasStableIds(true)
 
         noteRecyclerView = findViewById(R.id.notes_recycler)
