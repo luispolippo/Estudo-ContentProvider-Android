@@ -24,11 +24,11 @@ class NotesAdapter(private val listener: NoteClickedListener): RecyclerView.Adap
         holder.noteDescription.text = mCursor?.getString(mCursor?.getColumnIndex(NotesDataBaseHelper.DESCRIPTION_NOTES) as Int)
         holder.noteButtonRemove.setOnClickListener {
             mCursor?.moveToPosition(position)
-            listener.NoteRemoveItem(mCursor)
+            listener.noteRemoveItem(mCursor)
             notifyDataSetChanged()
         }
 
-        holder.itemView.setOnClickListener { listener.NoteClickedItem(mCursor as Cursor) }
+        holder.itemView.setOnClickListener { listener.noteClickedItem(mCursor as Cursor) }
     }
 
     override fun getItemCount(): Int = if(mCursor != null) mCursor?.count as Int else 0

@@ -4,7 +4,7 @@ import android.database.Cursor
 
 interface NoteClickedListener {
 
-    fun NoteClickedItem(cursor: Cursor)
-    fun NoteRemoveItem(cursor: Cursor?)
+    fun noteClickedItem(cursor: Cursor)
+    fun noteRemoveItem(cursor: Cursor?)
 
 }

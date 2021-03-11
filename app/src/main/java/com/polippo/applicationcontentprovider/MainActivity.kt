@@ -31,13 +31,13 @@ class MainActivity : AppCompatActivity(), LoaderManager.LoaderCallbacks<Cursor> 
         }
 
         adapter = NotesAdapter(object: NoteClickedListener{
-            override fun NoteClickedItem(cursor: Cursor) {
+            override fun noteClickedItem(cursor: Cursor) {
                 val id = cursor.getLong(cursor.getColumnIndex(_ID))
                 val fragment = NotesDetailFragment.newInstance(id)
                 fragment.show(supportFragmentManager, "dialog")
             }
 
-            override fun NoteRemoveItem(cursor: Cursor?) {
+            override fun noteRemoveItem(cursor: Cursor?) {
                 val id = cursor?.getLong(cursor.getColumnIndex(_ID))
                 contentResolver.delete(Uri.withAppendedPath(NotesProvider.URI_NOTES, id.toString()), null, null)
             }

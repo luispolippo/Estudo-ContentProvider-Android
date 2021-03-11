@@ -68,7 +68,7 @@ class NotesProvider : ContentProvider() {
             mUriMatcher.match(uri) == NOTES -> {
                 val db = dbHelper.writableDatabase
                 val cursor =
-                        db.query(NotesDataBaseHelper.TABLE_NOTES, projection, selection, selectionArgs, null,null, sortOrder )
+                        db.query(NotesDataBaseHelper.TABLE_NOTES, projection, selection, selectionArgs, null,null, sortOrder)
                 cursor.setNotificationUri(context?.contentResolver, uri)
                 cursor
             }

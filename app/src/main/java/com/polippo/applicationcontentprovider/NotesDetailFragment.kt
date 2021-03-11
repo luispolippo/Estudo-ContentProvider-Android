@@ -1,7 +1,6 @@
 package com.polippo.applicationcontentprovider
 
 import android.app.Activity
-import android.app.ActivityManager
 import android.app.AlertDialog
 import android.app.Dialog
 import android.content.ContentValues
@@ -20,7 +19,7 @@ class NotesDetailFragment: DialogFragment(), DialogInterface.OnClickListener {
     private var id: Long = 0
 
     companion object{
-        const val EXTRA_ID = "id"
+        private const val EXTRA_ID = "id"
         fun newInstance(id:Long): NotesDetailFragment {
             val bundle = Bundle()
             bundle.putLong(EXTRA_ID, id)

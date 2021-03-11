@@ -3,7 +3,7 @@ package com.polippo.applicationcontentprovider.database
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
-import android.provider.BaseColumns
+import android.provider.BaseColumns._ID
 
 class NotesDataBaseHelper(
     context: Context
@@ -11,7 +11,7 @@ class NotesDataBaseHelper(
 
     override fun onCreate(db: SQLiteDatabase?) {
         db?.execSQL("CREATE TABLE $TABLE_NOTES (" +
-            "${BaseColumns._ID} INTEGER NOT NULL PRIMARY KEY, " +
+            "$_ID INTEGER NOT NULL PRIMARY KEY, " +
                 "$TITLE_NOTES TEXT NOT NULL, " +
                 "$DESCRIPTION_NOTES TEXT NOT NULL)")
     }
