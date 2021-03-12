@@ -1,2 +1,2 @@
-# Estudo-API-Android
-Estudo de API para Android com ContentProvider
+# Estudo ContentProvider Android
+Estudo ContentProvider para Android
